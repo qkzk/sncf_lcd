@@ -2,33 +2,41 @@
 # -*- coding: utf-8 -*-
 
 import time
-import datetime as dt
+import datetime
+import sched
 
-d = dt.datetime.today() # 2016-12-26 13:38:18.464000
-print(d)
-
-j = dt.datetime.today().weekday() # le jour de la semaine à partir de lundi = 0
-print(j)
-
-n = time
-nf = n.strftime("%Y%m%dT%H%M%S00") #20161226T13381800
-print(nf)
-
-depart_dans = dt.timedelta(hours=1)
-
-import sched, time
+# on défini un programmateur temporel (?) = scheduler
 s = sched.scheduler(time.time, time.sleep)
-def print_time(): print "From print_time", time.time()
 
+# on converti l'horaire au bon format
+# "20161226T19290000"
+# vers
+# 1482776940.014
+def conversion_horaire(str):
+    str_tuple = (int(str[0:4]),int(str[4:6]),int(str[6:8]),int(str[9:11]),int(str[11:13]), int(str[13:15]))
+    # print(str_tuple)
+    str_datetime = datetime.datetime(*str_tuple)
+    # print(str_datetime)
+    str_mktime = time.mktime(str_datetime.timetuple())
+    # print(str_mktime)
+    return str_mktime
 
-def print_some_times():
-    print time.time()
-    s.enter(5, 1, print_time, ())
-    s.enter(10, 1, print_time, ())
+# l'evenement qui sera execute a l'heure dite
+def event_response():
+    print("et c'est parti ! ",time.time())
+
+# l'attente et la reponse (il sleep() entre les deux)
+# si le time est dans le passé il s'exécute immediatement
+def waittilltime(str):
+    print("on attend a partir de : ",time.time())
+    lancement = conversion_horaire(str)
+    s.enterabs(lancement, 1, event_response, ())
     s.run()
-    print time.time()
+    print(time.time())
+    print("fini")
 
-print_some_times()
 
-
-#dt.timedelta.total_seconds()
+if __name__ == '__main__':
+    # ici on a récupéré une date au format '20161226T13381800'
+    horaire = "20161226T19340000"
+    waittilltime(horaire)
