@@ -5,6 +5,9 @@
 renvoie l'heure de départ, d'arrivee et la duree
 d'un train qui arrive part de Lille et arrive à Hazebrouck avant l'horaire indiquée
 horaire = "20161229T080000"
+
+
+!!!
 '''
 def train(horaire):
 	# import time
