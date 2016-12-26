@@ -41,6 +41,30 @@ def waittilltime(str,type_event):
     print(time.time())
     print("fini")
 
+# l'evenement qui sera execute a l'heure dite
+def lcd_event(train,type_event):
+    import lcd_display
+    if type_event == 0:
+        print("event 0 ",time.time())
+        lcd_display.affichage("train " + train + "\nokay", (0.0,1.0,0.0))
+    elif type_event == 1:
+        print("event 1 ",time.time())
+        lcd_display.affichage("train " + train + "\ndouche !", (0.0,0.0,1.0))
+    elif type_event == 2:
+        print("event 2 ",time.time())
+        lcd_display.affichage("train " + train + "\npartir !", (1.0,0.0,0.0))
+        time.sleep(3)
+        lcd_display.clear_screen()
+
+# l'attente et la reponse (il sleep() entre les deux)
+# si le time est dans le passé il s'exécute immediatement
+def wait_and_lcd(str,train,type_event):
+    print("on attend a partir de : ",time.time())
+    lancement = conversion_horaire(str)
+    s.enterabs(lancement, 1, lcd_event, [train,type_event])
+    s.run()
+    print(time.time())
+    print("fini")
 '''
 le principe est :
     * se lancer à 0h00 tous les jours
@@ -53,7 +77,12 @@ le principe est :
 
 if __name__ == '__main__':
     # ici on a récupéré une date au format '20161226T13381800'
-    horaires = ["20161226T23420000","20161226T23430000","20161226T23440000"]
-    waittilltime(horaires[0],0)
-    waittilltime(horaires[1],1)
-    waittilltime(horaires[2],2)
+    # horaires = ["20161226T23420000","20161226T23430000","20161226T23440000"]
+    # waittilltime(horaires[0],0)
+    # waittilltime(horaires[1],1)
+    # waittilltime(horaires[2],2)
+    horaires = ["20161227T00170000","20161227T00180000","20161227T00190000"]
+    train = "7:20"
+    wait_and_lcd(horaires[0],train,0)
+    wait_and_lcd(horaires[1],train,1)
+    wait_and_lcd(horaires[2],train,2)
