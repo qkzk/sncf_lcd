@@ -4,7 +4,7 @@
 # renvoie l'heure de départ, l'heure d'arrivee, la duree d'un train qui arrive part de Lille et arrive à Hazebrouck avant l'horaire indique
 # horaire = "20161229T080000"
 
-def get_train(horaire):
+def train(horaire):
 	# import time
 	import urllib, json
 	import token
@@ -13,8 +13,8 @@ def get_train(horaire):
 	froms = 'stop_area:OCE:SA:87286005' # lille
 	to = 'stop_area:OCE:SA:87286302' 	# hazebrouck
 
-	
-	
+
+
 
 	# url qui renvoie de l'api sncf qui renvoie un json
 	url = "https://"+sandboxToken+"@api.sncf.com/v1/coverage/sncf/journeys?from="+froms+'&to='+to+'&datetime_represents=arrival&datetime='+horaire +'&'
@@ -29,12 +29,13 @@ def get_train(horaire):
 
 			stop =voyage["arrival_date_time"] # l'heure d'arrivee 20161229T074600
 			stop = stop[-6:-4] + ":" + stop[-4:-2] # 07:46 - à améliorer
-			
-			duration = voyage["duration"] / 60
+
+			duration = str(voyage["duration"] / 60)
 
 			print(start)
 			print(stop)
 			print(duration) # la durée en minutes
+	return([start,stop,duration])
 
 
 
@@ -43,4 +44,4 @@ def get_train(horaire):
 
 if __name__ == '__main__':
 	# le 29 decembre 2016 à 8h (arriver à Haz avant le...)
-	get_train('20161229T080000')
+	train('20161229T080000')
