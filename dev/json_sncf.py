@@ -5,11 +5,8 @@
 renvoie l'heure de départ, d'arrivee et la duree
 d'un train qui arrive part de Lille et arrive à Hazebrouck avant l'horaire indiquée
 horaire = "20161229T080000"
-
-
-!!!
 '''
-def train(horaire):
+def sncf_train(horaire):
 	# import time
 	import urllib, json
 	import token
@@ -18,13 +15,14 @@ def train(horaire):
 	froms = 'stop_area:OCE:SA:87286005' # lille
 	to = 'stop_area:OCE:SA:87286302' 	# hazebrouck
 
-
-
-
 	# url qui renvoie de l'api sncf qui renvoie un json
 	url = "https://"+sandboxToken+"@api.sncf.com/v1/coverage/sncf/journeys?from="+froms+'&to='+to+'&datetime_represents=arrival&datetime='+horaire +'&'
+	print('parsed url :')
+	print(url)
+
 	response = urllib.urlopen(url) # charge l'url
-	data = json.loads(response.read()) # met les données dans data
+	data = json.loads(response.read()) # charge les données dans data
+
 	# on cherche dans 'journeys' (= les voyages) si on a une section de type "public_transport"
 	for voyage in data['journeys'][0]["sections"]:
 		if voyage["type"]=="public_transport":
@@ -37,16 +35,34 @@ def train(horaire):
 
 			duration = str(voyage["duration"] / 60)
 
-			print(start)
-			print(stop)
-			print(duration) # la durée en minutes
+			print("le train part a "+start)
+			print("le train arrive a "+stop)
+			print("le trajet dure "+duration+ " minutes") # la durée en minutes
 	return([start,stop,duration])
 
 
+# le train que je prends qd j'ai cours à 8h
+def ajd_pour8h():
+	from time import localtime, strftime
+	print(" ")
+	print(strftime("%a, %d %b %Y %H:%M:%S +0000", localtime()))
+	arrive=strftime("%Y%m%dT072500", localtime())
+	print("horaire sncf : " +arrive)
+	sncf_train(arrive)
 
+# le train que je prends qd j'ai cours à 10h45
+def ajd_pour12h45():
+	from time import localtime, strftime
+	print(" ")
+	print(strftime("%a, %d %b %Y %H:%M:%S +0000", localtime()))
+	arrive=strftime("%Y%m%dT110000", localtime())
+	print("horaire sncf : " +arrive)
+	sncf_train(arrive)
 
 
 
 if __name__ == '__main__':
 	# le 29 decembre 2016 à 8h (arriver à Haz avant le...)
-	train('20161229T080000')
+	# sncf_train('20161229T080000')
+	ajd_pour12h45()
+	ajd_pour8h()

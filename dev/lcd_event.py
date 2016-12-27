@@ -1,5 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+'''
+le principe est :
+* se lancer à 0h00 tous les jours
+* s'il y a cours : récupérer l'horaire du train et lancer le scheduler
+* sinon passer et quitter (cron fera le lendemain)
+* scheduler : attend jusque x min avant le train et affiche msg sur lcd
+* lance le second scheduler etc.
+* eteint l'ecran dans le dernier scheduler
+'''
 
 import time
 import datetime
@@ -20,6 +29,8 @@ def conversion_horaire(str):
     str_mktime = time.mktime(str_datetime.timetuple())
     # print(str_mktime)
     return str_mktime
+'''
+# mode print only
 
 # l'evenement qui sera execute a l'heure dite
 def event_response(type_event):
@@ -40,39 +51,35 @@ def waittilltime(str,type_event):
     s.run()
     print(time.time())
     print("fini")
-
-# l'evenement qui sera execute a l'heure dite
+'''
+# les affichages sur l'ecran
 def lcd_event(train,type_event):
     import lcd_display
     if type_event == 0:
-        print("event 0 ",time.time())
+        print("event 0 : "+time.ctime())
         lcd_display.affichage("train " + train + "\nokay", (0.0,1.0,0.0))
+        print("train " + train + "\nokay")
     elif type_event == 1:
-        print("event 1 ",time.time())
+        print("event 1 : "+time.ctime())
         lcd_display.affichage("train " + train + "\ndouche !", (0.0,0.0,1.0))
+        print("train " + train + "\ndouche !")
     elif type_event == 2:
-        print("event 2 ",time.time())
+        print("event 2 : "+time.ctime())
         lcd_display.affichage("train " + train + "\npartir !", (1.0,0.0,0.0))
+        print("train " + train + "\npartir !")
         time.sleep(3)
         lcd_display.clear_screen()
 
 # l'attente et la reponse (il sleep() entre les deux)
 # si le time est dans le passé il s'exécute immediatement
 def wait_and_lcd(str,train,type_event):
-    print("on attend a partir de : ",time.time())
+    print("on attend a partir de : " + time.ctime())
     lancement = conversion_horaire(str)
     s.enterabs(lancement, 1, lcd_event, [train,type_event])
     s.run()
-    print(time.time())
-    print("fini")
-'''
-le principe est :
-    * se lancer à 0h00 tous les jours
-    * s'il y a cours : récupérer l'horaire du train et lancer le scheduler
-    * sinon passer et quitter (cron fera le lendemain)
-    * scheduler : attend jusque x min avant le train et affiche msg sur lcd
-    * lance le second scheduler etc.
-'''
+    # print(time.time())
+    # print("fin de l'attente")
+
 
 
 if __name__ == '__main__':
