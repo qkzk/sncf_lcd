@@ -41,28 +41,30 @@ def sncf_train(horaire):
 	return([start,stop,duration])
 
 
-# le train que je prends qd j'ai cours à 8h
-def ajd_pour8h():
+# le train que je prends qd je dois arriver a...
+def ajd_pour_x_heure(x):
 	from time import localtime, strftime
 	print(" ")
-	print(strftime("%a, %d %b %Y %H:%M:%S +0000", localtime()))
-	arrive=strftime("%Y%m%dT072500", localtime())
+	print(strftime("%a, %d %b %Y %H:%M:%S", localtime()))
+	arrive=strftime("%Y%m%dT", localtime())
+	arrive = arrive + x + "00"
 	print("horaire sncf : " +arrive)
-	sncf_train(arrive)
+	horaire = sncf_train(arrive)
+	return(horaire)
 
-# le train que je prends qd j'ai cours à 10h45
-def ajd_pour12h45():
+def dejeuner_a(x):
 	from time import localtime, strftime
 	print(" ")
-	print(strftime("%a, %d %b %Y %H:%M:%S +0000", localtime()))
-	arrive=strftime("%Y%m%dT110000", localtime())
+	print(strftime("%a, %d %b %Y %H:%M:%S", localtime()))
+	arrive=strftime("%Y%m%dT", localtime())
+	arrive = arrive + x + "00"
 	print("horaire sncf : " +arrive)
-	sncf_train(arrive)
+	horaire = sncf_train(arrive)
+	return(horaire)
+
 
 
 
 if __name__ == '__main__':
-	# le 29 decembre 2016 à 8h (arriver à Haz avant le...)
-	# sncf_train('20161229T080000')
-	ajd_pour12h45()
-	ajd_pour8h()
+	#si je dois arriver a 7h25
+	ajd_pour_x_heure("0725")
