@@ -2,6 +2,8 @@
 
 ## Principe
 
+![lcd_sncf](https://i.imgur.com/rMQj6XO.mp4)
+
 Récupère chaque jour une info sur google calendar : à quelle heure ai-je cours ?
 
 En fct de cet horaire, choisi un train à prendre pour arriver à l'heure (35' plus tôt à Hz)
