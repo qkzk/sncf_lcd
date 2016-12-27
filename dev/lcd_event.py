@@ -1,5 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+'''
+ABANDONNE
+
+tout a ete concentre dans calendrier.py, le seul truc a lancer tous les jours a minuit et au bout
+'''
+
+
+
 '''
 le principe est :
 * se lancer à 0h00 tous les jours

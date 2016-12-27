@@ -28,39 +28,30 @@ def sncf_train(horaire):
 		if voyage["type"]=="public_transport":
 			# print(voyage) # debug : pour tout afficher
 			start =voyage["departure_date_time"] # l'heure de départ 20161229T071500
-			start = start[-6:-4] + ":" + start[-4:-2] # 07:15 - à améliorer
+			startf = start[-6:-4] + ":" + start[-4:-2] # 07:15 - à améliorer
 
 			stop =voyage["arrival_date_time"] # l'heure d'arrivee 20161229T074600
-			stop = stop[-6:-4] + ":" + stop[-4:-2] # 07:46 - à améliorer
+			stopf = stop[-6:-4] + ":" + stop[-4:-2] # 07:46 - à améliorer
 
 			duration = str(voyage["duration"] / 60)
 
-			print("le train part a "+start)
-			print("le train arrive a "+stop)
+			print("le train part a "+startf)
+			print("le train arrive a "+stopf)
 			print("le trajet dure "+duration+ " minutes") # la durée en minutes
-	return([start,stop,duration])
+	return([startf,stopf,duration,start])
 
 
 # le train que je prends qd je dois arriver a...
 def ajd_pour_x_heure(x):
 	from time import localtime, strftime
-	print(" ")
+	print("Nous sommes le : ")
 	print(strftime("%a, %d %b %Y %H:%M:%S", localtime()))
 	arrive=strftime("%Y%m%dT", localtime())
 	arrive = arrive + x + "00"
-	print("horaire sncf : " +arrive)
+	# print("horaire sncf : " +arrive)
 	horaire = sncf_train(arrive)
 	return(horaire)
 
-def dejeuner_a(x):
-	from time import localtime, strftime
-	print(" ")
-	print(strftime("%a, %d %b %Y %H:%M:%S", localtime()))
-	arrive=strftime("%Y%m%dT", localtime())
-	arrive = arrive + x + "00"
-	print("horaire sncf : " +arrive)
-	horaire = sncf_train(arrive)
-	return(horaire)
 
 
 

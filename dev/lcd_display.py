@@ -58,7 +58,7 @@ def affichage(texte, couleur):
 def clear_screen():
 	lcd.set_color(0.0,0.0,0.0)
 	lcd.clear()
-	print("eteint l'ecran")
+	print("Extinction de l'ecran LCD")
 
 def test_train(train):
 	import json_sncf as sncf
