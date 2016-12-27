@@ -2,7 +2,7 @@
 
 ## Principe
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/ukOrs"><a href="//imgur.com/ukOrs">lcd_sncf</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+[see it in action](https://imgur.com/a/ukOrs)
 
 Récupère chaque jour une info sur google calendar : à quelle heure ai-je cours ?
 
