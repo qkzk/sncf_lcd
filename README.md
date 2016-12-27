@@ -2,7 +2,7 @@
 
 ## Principe
 
-![lcd_sncf](https://i.imgur.com/rMQj6XO.mp4)
+![lcd_sncf](https://i.imgur.com/rMQj6XO.gifv)
 
 Récupère chaque jour une info sur google calendar : à quelle heure ai-je cours ?
 
