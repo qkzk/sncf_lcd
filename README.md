@@ -1,5 +1,12 @@
 # lcd_sncf
 
+## todo :
+1. 0.2 : coordonner le truc complet : lancé auto, récupère l'info (dans un fichier), selon l'horaire va chercher le train et lance les affichages
+1. ajouter google calendar
+
+
+## Principe
+
 Récupère chaque jour une info sur google calendar : à quelle heure ai-je cours ?
 
 En fct de cet horaire, choisi un train à prendre pour arriver à l'heure (35' plus tôt à Hz)
@@ -9,6 +16,8 @@ Affiche sur l'ecran LCD :
 * qu'il est l'heure de me préparer (en cyan)
 * qu'il est l'heure de partir (en rouge)
 * ensuite s'éteint
+
+## Versions
 
 Version 0.1 :
 élements séparés en python
@@ -20,7 +29,7 @@ fritzing :
 * proto grand breadboard (actuel)
 * proto mini breadboard
 
-brouillon :
+## brouillon :
 
 1. récupérer l'horaire du cours
 1. récupérer l'horaire du train
@@ -31,8 +40,3 @@ brouillon :
     * orange se préparer < 15'
     * rouge + clignoter = partir
     * ensuite s'eteint 15' après
-
-
-
-todo :
-1. ajouter google calendar
