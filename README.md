@@ -1,10 +1,5 @@
 # lcd_sncf
 
-## todo :
-1. 0.2 : coordonner le truc complet : lancé auto, récupère l'info (dans un fichier), selon l'horaire va chercher le train et lance les affichages
-1. ajouter google calendar
-
-
 ## Principe
 
 Récupère chaque jour une info sur google calendar : à quelle heure ai-je cours ?
@@ -19,11 +14,21 @@ Affiche sur l'ecran LCD :
 
 ## Versions
 
-Version 0.1 :
+### 0.2
+FONCTIONNE !
+3 fichiers et qq dependances
+* calendrier.py : main truc, lance tous les jours à 0h et au boot (si tourne pas deja...)
+* json_sncf : recupere les infos sncf
+* lcd_display : commande l'ecran lcd
+* token.py : contient la clé sncf_api
+
+
+### 0.1
 élements séparés en python
 * json_sncf : librairie qui récupere les horaires et infos des trains en questions, 2 nlles fct pour 8h et 12h45 (mes horaires cette année)  
 * lcd_display : affiche un msg à l'ecran avec une couleur et vide l'ecran
 * lcd_event : brouillon de combinaison :  affiche des scheduled events sur l'ecran lcd
+
 
 fritzing :
 * proto grand breadboard (actuel)
