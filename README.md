@@ -16,7 +16,7 @@ Affiche sur l'ecran LCD :
 
 ## crontab - lancement automatique
 Les logs seront enregristrés dans `~/lcd_sncf/calendrier.log`  
-Taper : `$ mkdir ~/lcd_sncf/` puis `$ touch ~/lcd_sncf/calendrier.log`
+Taper : `$ mkdir ~/lcd_sncf/` puis `$ touch ~/lcd_sncf/calendrier.log`  
 Taper : `$ sudo crontab -e` et ajouter à la fin :
 
     # lancer calndrier au boot
