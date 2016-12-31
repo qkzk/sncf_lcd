@@ -24,6 +24,11 @@ Taper : `$ sudo crontab -e` et ajouter à la fin :
     # lancer calendrier a minuit  
     05 00 * * * /usr/bin/python /home/pi/lcd_sncf/dev/calendrier.py >> /home/pi/lcd_sncf_log/calendrier.log 2>&1
 
+## troubleshooting
+
+### L'écran lcd reste allumé, continue d'afficher du texte...
+Taper : `$ python ~/lcd_sncf/dev/lcd_display.py` pour lancer des tests d'affichage et éteindre l'écran.
+
 ## Versions
 
 ### 0.2
