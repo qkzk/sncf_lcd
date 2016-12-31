@@ -14,6 +14,12 @@ Affiche sur l'ecran LCD :
 * qu'il est l'heure de partir (en rouge)
 * ensuite s'éteint
 
+## crontab - lancement automatique
+    # lancer calndrier au boot
+    @reboot /usr/bin/python /home/pi/lcd_sncf/dev/calendrier.py >> /home/pi/lcd_sncf_log/calendrier.log 2>&1
+    # lancer calendrier a minuit
+  05 00 * * * /usr/bin/python /home/pi/lcd_sncf/dev/calendrier.py >> /home/pi/lcd_sncf_log/calendrier.log 2>&1
+
 ## Versions
 
 ### 0.2
