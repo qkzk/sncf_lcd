@@ -15,6 +15,8 @@ Affiche sur l'ecran LCD :
 * ensuite s'éteint
 
 ## crontab - lancement automatique
+Taper `$ sudo crontab -e` et ajouter à la fin :
+
     # lancer calndrier au boot
     @reboot /usr/bin/python /home/pi/lcd_sncf/dev/calendrier.py >> /home/pi/lcd_sncf_log/calendrier.log 2>&1
     # lancer calendrier a minuit  
