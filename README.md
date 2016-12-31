@@ -15,7 +15,9 @@ Affiche sur l'ecran LCD :
 * ensuite s'éteint
 
 ## crontab - lancement automatique
-Taper `$ sudo crontab -e` et ajouter à la fin :
+Les logs seront enregristrés dans `~/lcd_sncf/calendrier.log`
+Taper : `$ mkdir ~/lcd_sncf/` puis `$ touch ~/lcd_sncf/calendrier.log`
+Taper : `$ sudo crontab -e` et ajouter à la fin :
 
     # lancer calndrier au boot
     @reboot sleep 300; /usr/bin/python /home/pi/lcd_sncf/dev/calendrier.py >> /home/pi/lcd_sncf_log/calendrier.log 2>&1
