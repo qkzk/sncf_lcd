@@ -41,8 +41,8 @@ False
 ]
 
 # le nb de seconde a maintenir l'ecran illumine
-display_time = 3 # 3 secondes pour debug
-# display_time = 10*60 # 10 minutes realiste
+# display_time = 3 # 3 secondes pour debug
+display_time = 10*60 # 10 minutes realiste
 
 
 # fonctions
@@ -137,9 +137,14 @@ if __name__ == '__main__':
     debut_cours = emploi_du_temps[jour_de_la_semaine]
     # si un cours est prevu
     if debut_cours:
-        print("j'ai cours aujourd'hui")
+        print("\nj'ai cours aujourd'hui")
         # on affiche les horaires dans la console
         leshoraires = affichage_matin()
         # on affiche les infos sur le lcd
         lcd_matin(leshoraires)
+    else:
+        from time import localtime, strftime
+        print("\nNous sommes le : ")
+    	print(strftime("%a, %d %b %Y %H:%M:%S", localtime()))
+        print("je n'ai pas cours aujourd'hui")
     pass
