@@ -1,8 +1,23 @@
 # lcd_sncf
 
-## Principe
 
 [see it in action](https://imgur.com/a/ukOrs)
+
+## Hardware
+* Raspberry Pi 2 ou 3 (peut-être le 1B ?)  
+* LCD RGB (grove ou adafruit)  
+* quelques fils pour le grove, beaucoup pour celui d'adafruit.  
+* voltage shifter (5v <-> 3.3v) pour le grove
+
+Deux écrans LCD sont supportés : Adafruit LCD RGB et Grove LCD RGB
+
+### Adafruit LCD RGB
+18 pins, montage classique, RAS. Potentiomètre de contraste.
+
+### Grove LCD RGB
+I2C 5v logic. Nécessite un voltage shifter avec un montage particulier. L'alimentation directement sur celle du RPI 5V ! Les trois autres pins à travers le voltage shifter.
+
+## Principe
 
 Récupère chaque jour une info sur google calendar : à quelle heure ai-je cours ?
 
@@ -20,9 +35,9 @@ Taper : `$ mkdir ~/lcd_sncf/` puis `$ touch ~/lcd_sncf/calendrier.log`
 Taper : `$ sudo crontab -e` et ajouter à la fin :
 
     # lancer calndrier au boot
-    @reboot sleep 300; /usr/bin/python /home/pi/lcd_sncf/dev/calendrier.py >> /home/pi/lcd_sncf_log/calendrier.log 2>&1
+    @reboot sleep 300; /usr/bin/python /home/pi/lcd_sncf/grove_lcd/grove-lcd-master/calendrier.py >> /home/pi/lcd_sncf_log/calendrier.log 2>&1
     # lancer calendrier a minuit  
-    05 00 * * * /usr/bin/python /home/pi/lcd_sncf/dev/calendrier.py >> /home/pi/lcd_sncf_log/calendrier.log 2>&1
+    05 00 * * * /usr/bin/python /home/pi/lcd_sncf/grove_lcd/grove-lcd-master/calendrier.py >> /home/pi/lcd_sncf_log/calendrier.log 2>&1
 
 ## troubleshooting
 
@@ -31,9 +46,16 @@ Taper : `$ python ~/lcd_sncf/dev/lcd_display.py` pour lancer des tests d'afficha
 
 ## Versions
 
+### 0.3
+Ajout du GROVE LCD RGB.
+**Python Library for Seeed Studio's Grove RGB LCD**
+
+This is a work-in-progress port of https://github.com/Seeed-Studio/Grove_LCD_RGB_Backlight
+
+
 ### 0.2
 FONCTIONNE !
-3 fichiers et qq dependances
+3 fichiers et qq dependences
 * calendrier.py : main truc, lance tous les jours à 0h et au boot (si tourne pas deja...)
 * json_sncf : recupere les infos sncf
 * lcd_display : commande l'ecran lcd
