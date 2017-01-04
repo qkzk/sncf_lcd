@@ -39,16 +39,20 @@ Taper : `$ sudo crontab -e` et ajouter à la fin :
     # lancer calendrier a minuit  
     05 00 * * * /usr/bin/python /home/pi/lcd_sncf/grove_lcd/grove-lcd-master/calendrier.py >> /home/pi/lcd_sncf_log/calendrier.log 2>&1
 
+Si nécessaire, éditer le crontab pour le lcd d'adafruit en dirigeant vers les bons fichiers.
 ## troubleshooting
 
-### L'écran lcd reste allumé, continue d'afficher du texte...
-Taper : `$ python ~/lcd_sncf/dev/lcd_display.py` pour lancer des tests d'affichage et éteindre l'écran.
+### L'écran Adfafruit lcd reste allumé, continue d'afficher du texte...
+Taper : `$ python ~/lcd_sncf/adafruit_lcd/dev/lcd_display.py` pour lancer des tests d'affichage et éteindre l'écran.
+
+### Le grove plante
+Le débrancher / rebrancher (fail)
 
 ## Versions
 
 ### 0.3
-Ajout du GROVE LCD RGB.
-**Python Library for Seeed Studio's Grove RGB LCD**
+Ajout du GROVE LCD RGB.  
+**Python Library for Seeed Studio's Grove RGB LCD**  
 
 This is a work-in-progress port of https://github.com/Seeed-Studio/Grove_LCD_RGB_Backlight
 
