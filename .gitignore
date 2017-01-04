@@ -87,4 +87,5 @@ ENV/
 
 # Rope project settings
 .ropeproject
-dev/token.py
+adafruit_lcd/dev/token.py
+grove_lcd/token.py
