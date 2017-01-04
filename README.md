@@ -27,7 +27,7 @@ Affiche sur l'ecran LCD :
 * le temps pour déjeuner (en vert)
 * qu'il est l'heure de me préparer (en cyan)
 * qu'il est l'heure de partir (en rouge)  
-Ensuite éteint l'écran
+Ensuite éteint l'écran.
 
 ## crontab - lancement automatique
 Les logs seront enregristrés dans `~/lcd_sncf/calendrier.log`  
