@@ -26,7 +26,7 @@ En fct de cet horaire, choisi un train à prendre pour arriver à l'heure (35' p
 Affiche sur l'ecran LCD :
 * le temps pour déjeuner (en vert)
 * qu'il est l'heure de me préparer (en cyan)
-* qu'il est l'heure de partir (en rouge)
+* qu'il est l'heure de partir (en rouge)  
 Ensuite éteint l'écran
 
 ## crontab - lancement automatique
