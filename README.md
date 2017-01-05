@@ -4,7 +4,7 @@
 [see it in action](https://imgur.com/a/ukOrs)
 
 ## Hardware
-* Raspberry Pi 2 ou 3 (peut-être le 1B ?)  
+* Raspberry Pi 2 ou 3 (peut-être le 1B )  
 * LCD RGB (grove ou adafruit)  
 * quelques fils pour le grove, beaucoup pour celui d'adafruit.  
 * voltage shifter (5v <-> 3.3v) pour le grove
