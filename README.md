@@ -23,7 +23,7 @@ Récupère chaque jour une info sur google calendar : à quelle heure ai-je cour
 
 En fct de cet horaire, choisi un train à prendre pour arriver à l'heure (35' plus tôt à Hz)
 
-Affiche sur l'ecran LCD :
+Affiche sur l'écran LCD :
 * le temps pour déjeuner (en vert)
 * qu'il est l'heure de me préparer (en cyan)
 * qu'il est l'heure de partir (en rouge)  
@@ -31,11 +31,11 @@ Affiche sur l'ecran LCD :
 Ensuite éteint l'écran.
 
 ## crontab - lancement automatique
-Les logs seront enregristrés dans `~/lcd_sncf/calendrier.log`  
+Les logs seront enregistrés dans `~/lcd_sncf/calendrier.log`  
 Taper : `$ mkdir ~/lcd_sncf/` puis `$ touch ~/lcd_sncf/calendrier.log`  
 Taper : `$ sudo crontab -e` et ajouter à la fin :
 
-    # lancer calndrier au boot
+    # lancer calendrer au boot
     @reboot sleep 300; /usr/bin/python /home/pi/lcd_sncf/grove_lcd/grove-lcd-master/calendrier.py >> /home/pi/lcd_sncf_log/calendrier.log 2>&1
     # lancer calendrier a minuit  
     05 00 * * * /usr/bin/python /home/pi/lcd_sncf/grove_lcd/grove-lcd-master/calendrier.py >> /home/pi/lcd_sncf_log/calendrier.log 2>&1
@@ -62,16 +62,16 @@ This is a work-in-progress port of https://github.com/Seeed-Studio/Grove_LCD_RGB
 FONCTIONNE !
 3 fichiers et qq dependences
 * calendrier.py : main truc, lance tous les jours à 0h et au boot (si tourne pas deja...)
-* json_sncf : recupere les infos sncf
-* lcd_display : commande l'ecran lcd
+* json_sncf : récupère les infos sncf
+* lcd_display : commande l'écran lcd
 * token.py : contient la clé sncf_api
 
 
 ### 0.1
 élements séparés en python
-* json_sncf : librairie qui récupere les horaires et infos des trains en questions, 2 nlles fct pour 8h et 12h45 (mes horaires cette année)  
-* lcd_display : affiche un msg à l'ecran avec une couleur et vide l'ecran
-* lcd_event : brouillon de combinaison :  affiche des scheduled events sur l'ecran lcd
+* json_sncf : librairie qui récupère les horaires et infos des trains en questions, 2 nlles fct pour 8h et 12h45 (mes horaires cette année)  
+* lcd_display : affiche un msg à l'écran avec une couleur et vide l'écran
+* lcd_event : brouillon de combinaison :  affiche des scheduled events sur l'écran lcd
 
 
 fritzing :
@@ -84,8 +84,8 @@ fritzing :
 1. récupérer l'horaire du train
 1. calculer le temps nécessaire : se préparer, partir, metro, train, marcher, salle  
     pour 8H : debout 5H30, partir 6h15, metro etc. 25, gare 6h40, train 6h45  
-    la couleur LCD reflete :  
+    la couleur LCD reflète :  
     * vert good > 15'
     * orange se préparer < 15'
     * rouge + clignoter = partir
-    * ensuite s'eteint 15' après
+    * ensuite s'éteint 15' après
