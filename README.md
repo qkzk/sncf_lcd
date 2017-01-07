@@ -1,7 +1,7 @@
 # lcd_sncf
 
 
-[see it in action !!!!](https://imgur.com/a/ukOrs)
+[see it in action !! !!](https://imgur.com/a/ukOrs)
 
 ## Hardware
 * Raspberry Pi 2 ou 3 (peut-être le 1B ?)  
