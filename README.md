@@ -51,6 +51,9 @@ Le débrancher / rebrancher (fail)
 
 ## Versions
 
+### 0.3.1
+Tentative de correction de l'IO Error (provoquée par le lcd ?) : ajout de 5 essais pour afficher chaque event sur le lcd...
+
 ### 0.3
 Ajout du GROVE LCD RGB.  
 **Python Library for Seeed Studio's Grove RGB LCD**  
