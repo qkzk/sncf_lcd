@@ -15,31 +15,25 @@ principe :
     affiche les infos dans la console (cour ?, date, horaire du train, horaires)
     affiche et colore l'ecran lcd en fct
 
-probleme :
-    plante...
-    le pb semble provenir du lcd etant donne que ca plante
-    meme qd on n'appelle pas json_sncf (ie. qd j'ai pas cours)
-
-    solution envisagee (merdique...)
-    while not done
-        try
-        except
-
-    danger : boucle infinie
-    creer compteur d'essais
-
-    a integrer au coeur du bug juste avant que ca risque de merder
-
 """
 
 
-# imports generaux
+# imports
 import time
 import datetime
 import sched
 import json_sncf
-import math
 
+import display
+
+from smbus import SMBus
+import math
+# import time
+import backlight
+import screen
+
+
+d = display.Display(SMBus(1))
 
 # on défini un programmateur temporel (?) = scheduler
 s = sched.scheduler(time.time, time.sleep)
@@ -105,43 +99,15 @@ les evenements et l'affichage
 # l'attente et la reponse (il sleep() entre les deux)
 # si le time est dans le passé il s'exécute immediatement
 def wait_and_lcd(str,train,type_event):
-    '''
-    ajout d'essais pour tenter 5 fois d'afficher le truc
-    
-    HEADER CODE
-    attempts = 5
-    for attempt in xrange(attempts):
-        urllib2.initialization()
-        try:
-            while True:
-                urllib2.read(somebytes)
-                urllib2.read(somebytes)
-                urllib2.read(somebytes)
-                ...
-            except Exception, e:
-                print e
-            else:
-                break
-                FOOTER CODE
-
-    '''
-    essais = 5
-    for essai in xrange(essais):
-        try:
-            print("on attend a partir de : " + time.ctime())
-            lancement = conversion_horaire(str)
-            s.enterabs(lancement, 1, lcd_affichage, [train,type_event])
-            s.run()
-            # print("fin de l'attente")
-        except Exception as e:
-            print e
-        else:
-            break
+    print("on attend a partir de : " + time.ctime())
+    lancement = conversion_horaire(str)
+    s.enterabs(lancement, 1, lcd_affichage, [train,type_event])
+    s.run()
+    # print("fin de l'attente")
 
 
 # envoie les msg a afficher
 def lcd_matin(listhoraires):
-
     print("Allumage LCD")
     for i in range(3):
         wait_and_lcd(listhoraires[i],listhoraires[4],i)
@@ -158,16 +124,6 @@ def conversion_horaire(str):
 
 # les affichages sur l'ecran lcd
 def lcd_affichage(train,type_event):
-    #ca merde ici
-
-
-    # imports lcd
-    from smbus import SMBus
-    import display
-    import backlight
-    import screen
-    # variable lcd
-    d = display.Display(SMBus(1))
     # import lcd_display
     if type_event == 0:
         # print("event 0 : "+time.ctime())
