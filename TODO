@@ -1,0 +1,11 @@
+0.2 :
+tester en vrai... truquer l'edt pour un prochain train : mardi 3 janvier 2017
+
+0.3 :
+ajout du grove
+
+0.4 :
+regrouper les parties communes (sncf, etc.)
+séparer les parties différentes (les affichages, via des appels)
+galere car il faut positionner celui du grove sur le bon caractère...
+mais 1 seule fonction qui diffère.
