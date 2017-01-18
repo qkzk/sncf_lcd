@@ -1,7 +1,7 @@
 # lcd_sncf
 
 
-[see it in action !!!!](https://imgur.com/a/ukOrs)
+[see it in action !!! dfdsf  !!!](https://imgur.com/a/ukOrs)
 
 ## Hardware
 * Raspberry Pi 2 ou 3 (peut-être le 1B ?)  
@@ -50,6 +50,9 @@ Taper : `$ python ~/lcd_sncf/adafruit_lcd/dev/lcd_display.py` pour lancer des te
 Le débrancher / rebrancher (fail)
 
 ## Versions
+
+### 0.3.1
+Tentative de correction de l'IO Error (provoquée par le lcd ?) : ajout de 5 essais pour afficher chaque event sur le lcd...
 
 ### 0.3
 Ajout du GROVE LCD RGB.  
