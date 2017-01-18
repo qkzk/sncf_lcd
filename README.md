@@ -1,8 +1,6 @@
 # lcd_sncf
 
-qsdf
-
-[see it in actfion !!! dfdsf !! !  ](https://imgur.com/a/ukOrs)
+[see it in action !!! dfdsf !! !  ](https://imgur.com/a/ukOrs)
 
 
 ## Hardware
